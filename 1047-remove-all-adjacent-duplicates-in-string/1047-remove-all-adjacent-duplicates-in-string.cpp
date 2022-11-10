@@ -14,7 +14,6 @@ private:
     }
     
     string soln2(string s) {
-        int size = s.size();
         string ans;
         for(char &ch: s) {
             if(ans.size() == 0 || ans.back() != ch) {
