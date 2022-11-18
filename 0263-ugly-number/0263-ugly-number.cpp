@@ -2,11 +2,11 @@ class Solution {
 public:
     bool isUgly(int n) {
         if (n < 1) return false;
-        for(int i=2; i<=sqrt(n); i++) {
-            if(n % i == 0 && i > 5) return false;
-            while(n % i == 0) n /= i;
+        for (int p: {2, 3, 5}) {
+            while (n % p == 0) {
+                n /= p;
+            }
         }
-        if(n > 5 || n < 0) return false;
-        return true;
+        return n == 1;
     }
 };
