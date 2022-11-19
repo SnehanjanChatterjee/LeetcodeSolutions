@@ -1,4 +1,8 @@
 class Solution {
+private:
+    int orientation(const vector<int>& a, const vector<int>& b, const vector<int>& c) {
+        return (b[0] - a[0]) * (c[1] - b[1]) - (b[1] - a[1]) * (c[0] - b[0]);
+    }
 public:
     vector<vector<int>> outerTrees(vector<vector<int>>& trees) {
         // Andrew's monotone chain method.
@@ -25,9 +29,5 @@ public:
         }
         ans.pop_back();
         return ans;
-    }
-
-    static int orientation(const vector<int>& a, const vector<int>& b, const vector<int>& c) {
-        return (b[0] - a[0]) * (c[1] - b[1]) - (b[1] - a[1]) * (c[0] - b[0]);
     }
 };
