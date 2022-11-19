@@ -1,4 +1,5 @@
 class Solution {
+// https://leetcode.com/problems/erect-the-fence/discuss/2829600/C%2B%2B-oror-Andrew's-monotone-chain-method
 private:
     int orientation(const vector<int>& a, const vector<int>& b, const vector<int>& c) {
         return (b[0] - a[0]) * (c[1] - b[1]) - (b[1] - a[1]) * (c[0] - b[0]);
