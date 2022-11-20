@@ -15,7 +15,7 @@ private:
             int pick = guess(mid);
             if(pick == -1) return binarySearch(l, mid - 1);
             else if(pick == 1) return binarySearch(mid + 1, h);
-            if(pick == 0) return mid;
+            else if(pick == 0) return mid;
         }
         return -1;
     }
