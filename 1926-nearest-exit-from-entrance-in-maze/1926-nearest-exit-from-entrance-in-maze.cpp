@@ -1,13 +1,9 @@
 class Solution {
 private:
-    bool isExitCell(int &row, int &col, vector<vector<char>>& maze) {
-        int rows = maze.size();
-        int cols = maze[0].size();
+    bool isExitCell(int &row, int &col, int &rows, int &cols, vector<vector<char>>& maze) {
         return (row==0 || col==0 || row==rows-1 || col==cols-1);
     }
-    bool isValidCell(int &row, int &col, vector<vector<char>>& maze, vector<vector<int>>& vis) {
-        int rows = maze.size();
-        int cols = maze[0].size();
+    bool isValidCell(int &row, int &col, int &rows, int &cols, vector<vector<char>>& maze, vector<vector<int>>& vis) {
         return ((row>=0 && col>=0 && row<rows && col<cols) && vis[row][col] == -1 && maze[row][col] == '.');
     }
 public:
@@ -34,8 +30,8 @@ public:
                 for(int i=0; i<4; i++) {
                     int nRow = row + delRow[i];
                     int nCol = col + delCol[i];
-                    if(isValidCell(nRow, nCol, maze, vis)) {
-                        if(isExitCell(nRow, nCol, maze)) return steps;
+                    if(isValidCell(nRow, nCol, rows, cols, maze, vis)) {
+                        if(isExitCell(nRow, nCol, rows, cols, maze)) return steps;
                         vis[nRow][nCol] = 1;
                         q.push({nRow, nCol});
                     }
