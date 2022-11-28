@@ -17,9 +17,11 @@ public:
         }
         
         vector<vector<int>> ans (2);
-        for(auto x: ump) {
-            if(x.second == 0) ans[0].push_back(x.first);
-            if(x.second == 1) ans[1].push_back(x.first);
+        // vector<vector<int>> answer(2, vector<int>()); // Also this declaration is fine
+        
+        for(auto [player, count]: ump) {
+            if(count == 0) ans[0].push_back(player);
+            if(count == 1) ans[1].push_back(player);
         }
         
         sort(ans[0].begin(), ans[0].end());
