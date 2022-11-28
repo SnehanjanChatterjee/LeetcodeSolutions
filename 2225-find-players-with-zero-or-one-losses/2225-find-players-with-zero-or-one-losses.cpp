@@ -3,13 +3,16 @@ public:
     vector<vector<int>> findWinners(vector<vector<int>>& matches) {
         // {playerId, lostCount}
         unordered_map<int, int> ump;
+        int winner, loser;
         
         for(vector<int>& v: matches) {
-            int winner = v[0];
-            int loser = v[1];
+            winner = v[0], loser = v[1];
+            // If a winner doesn't exist in map (i.e hasn't played a match yet), this player's lost count till now would be 0 as this is his 1st watch and he won.
+            // So this would insert him into the map with lostCount = 0. So if he lose in the future we would just increase his lostCount
             if(ump.find(winner) == ump.end()) {
                 ump[winner] = 0;
             }
+            // Loser exists in map or not doesn't matter, increase this player's lost count
             ump[loser]++;
         }
         
