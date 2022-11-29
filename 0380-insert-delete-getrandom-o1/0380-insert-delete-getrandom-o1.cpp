@@ -12,8 +12,9 @@ public:
     }
     
     bool remove(int val) {
-        if(randomizedSet.find(val) != randomizedSet.end()) {
-            randomizedSet.erase(val);
+        auto itr = randomizedSet.find(val);
+        if(itr != randomizedSet.end()) {
+            randomizedSet.erase(itr);
             return true;
         }
         return false;
