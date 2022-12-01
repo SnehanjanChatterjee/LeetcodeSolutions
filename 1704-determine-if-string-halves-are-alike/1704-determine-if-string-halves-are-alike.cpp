@@ -6,11 +6,11 @@ private:
     }
 public:
     bool halvesAreAlike(string s) {
-        int i = 0, j = s.size() - 1, ci = 0, cj = 0;
+        int i = 0, j = s.size() - 1, c = 0;
         while(i < j) {
-            if(isVowel(s[i++])) ci++;
-            if(isVowel(s[j--])) cj++;
+            if(isVowel(s[i++])) c++;
+            if(isVowel(s[j--])) c--;
         }
-        return ci == cj;
+        return c == 0;
     }
 };
