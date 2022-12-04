@@ -10,7 +10,7 @@ public:
             suffixSum[i] = nums[i] + suffixSum[i+1];
         }
         
-        // Don't need to calculate separately
+        // No need to calculate separately
         // prefixSum[0] = nums[0];
         // for(int i=1; i<n; i++) {
         //     prefixSum[i] = nums[i] + prefixSum[i-1];
