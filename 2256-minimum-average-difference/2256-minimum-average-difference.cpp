@@ -10,14 +10,18 @@ public:
             suffixSum[i] = nums[i] + suffixSum[i+1];
         }
         
-        prefixSum[0] = nums[0];
-        for(int i=1; i<n; i++) {
-            prefixSum[i] = nums[i] + prefixSum[i-1];
-        }
+        // Don't need to calculate separately
+        // prefixSum[0] = nums[0];
+        // for(int i=1; i<n; i++) {
+        //     prefixSum[i] = nums[i] + prefixSum[i-1];
+        // }
         
         int ans = INT_MAX;
         long long minDiff = INT_MAX;
         for(int i=0; i<n; i++) {
+            
+            prefixSum[i] = (i == 0) ? nums[i] : (nums[i] + prefixSum[i-1]);
+            
             int firstHalfCount = i + 1;
             int secondHalfCount = n - i - 1;
             
