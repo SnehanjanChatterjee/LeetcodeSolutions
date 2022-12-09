@@ -11,21 +11,21 @@
  */
 class Solution {
 private:
-    void preorder(TreeNode* root, int &maxDiff, int minVal, int maxVal) {
+    void preorder(TreeNode* root, int &maxDiff, int minValTillCurNode, int maxValTillCurNode) {
         if(root==NULL) return;
         
         // At current node, calculate the difference b/w current node value and
         // the min value till now and max value till now in current path.
         // If any of the differences are greater than maxDiff, maxDiff will be updated
-        maxDiff = max(maxDiff, max(abs(root->val - maxVal), abs(root->val - minVal)));
+        maxDiff = max(maxDiff, max(abs(root->val - minValTillCurNode), abs(root->val - maxValTillCurNode)));
         
         // Pass the min value till now and max value till now in current path
-        preorder(root->left, maxDiff, min(minVal, root->val), max(maxVal, root->val));
-        preorder(root->right, maxDiff, min(minVal, root->val), max(maxVal, root->val));
+        preorder(root->left, maxDiff, min(minValTillCurNode, root->val), max(maxValTillCurNode, root->val));
+        preorder(root->right, maxDiff, min(minValTillCurNode, root->val), max(maxValTillCurNode, root->val));
     }
 public:
     int maxAncestorDiff(TreeNode* root) {
-        int maxDiff = 0, minVal = INT_MAX, maxVal = INT_MIN;
+        int maxDiff = 0;
         preorder(root, maxDiff, root->val, root->val);
         return maxDiff;
     }
