@@ -10,6 +10,9 @@ public:
             int curTemp = temperatures[curInd];
             if(!st.empty()) {
                 // Till we dont find a temp > current temp keep popping stack elements
+                // We can pop and not add back because if temp value at the top of the stack is smaller than curTemp,
+                // then we know that curTemp itself could be the next greater temperature for all tempretaures before it.
+                // So we dont need the values <= curTemp anyway
                 while(!st.empty() && st.top().first <= curTemp) {
                     st.pop();
                 }
