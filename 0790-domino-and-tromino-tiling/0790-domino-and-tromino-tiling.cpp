@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // https://leetcode.com/problems/domino-and-tromino-tiling/discuss/1620809/PythonJAVACC%2B%2B-DP-oror-Image-Visualized-Explanation-oror-100-Faster-oror-O(N)
     int numTilings(int n) {
         if (n == 1) return 1;
         unsigned int dp[n]; dp[0] = 1; dp[1] = 2;
