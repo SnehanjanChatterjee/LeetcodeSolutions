@@ -16,12 +16,14 @@ public:
                     c++;
                 }
                 else {
-                    sum = 0;
-                    c = 0;
+                    // sum = 0;
+                    // c = 0;
+                    break;
                 }
-                maxC = max(maxC, c);
+                //maxC = max(maxC, c);
             }
-            ans.push_back(maxC);
+            // ans.push_back(maxC);
+            ans.push_back(c);
             itr++;
         }
         
