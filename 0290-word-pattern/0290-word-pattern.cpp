@@ -11,10 +11,6 @@ public:
             {
                 ump_char[pattern[ind]].insert(word);
                 ump_str[word].insert(pattern[ind]);
-                
-                if(ump_char[pattern[ind]].size() > 1) return false;
-                if(ump_str[word].size() > 1) return false;
-                
                 ind++;
                 word = "";
             }
@@ -24,11 +20,16 @@ public:
         }
         ump_char[pattern[ind]].insert(word);
         ump_str[word].insert(pattern[ind]);
-        
-        if(ump_char[pattern[ind]].size() > 1) return false;
-        if(ump_str[word].size() > 1) return false;
 
         if(ind < (pattern.size() - 1)) return false;
+
+        for(auto x: ump_char) {
+            if(x.second.size() > 1) return false;
+        }
+
+        for(auto x: ump_str) {
+            if(x.second.size() > 1) return false;
+        }
 
         return true;
     }
