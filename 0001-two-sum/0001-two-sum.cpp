@@ -57,6 +57,7 @@ private:
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
         // return solution1(nums, target);
-        return solution2(nums, target);
+        // return solution2(nums, target);
+        return solution3(nums, target);
     }
 };
