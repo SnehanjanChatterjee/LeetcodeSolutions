@@ -1,5 +1,6 @@
 class Solution {
 private:
+    // 2 pointer with map
     vector<int> solution1(vector<int>& nums, int target) {
         multimap<int, int> mp;
         int n = nums.size();
@@ -20,9 +21,9 @@ private:
         return {};
     }
     
+    // 2 Pointer with sorted array
     vector<int> solution2(vector<int>& nums, int target) {
         int n = nums.size(), i = 0, j = n - 1;
-        vector<int> ans(2);
         vector<pair<int, int>> nums2;
         
         for(int i = 0; i < n; i++) {
@@ -35,6 +36,22 @@ private:
             else if(nums2[i].first + nums2[j].first < target) i++;
             else if(nums2[i].first + nums2[j].first > target) j--;
         }
+        return {};
+    }
+    
+    // Hashing
+    vector<int> solution3(vector<int>& nums, int target) {
+        int n = nums.size();
+        unordered_map<int, int> ump;
+        
+        for(int i=0; i<n; i++) {
+            int remainder = target - nums[i];
+            if(ump.find(remainder) != ump.end()) {
+                return {i, ump[remainder]};
+            }
+            ump.insert({nums[i], i});
+        }
+        
         return {};
     }
 public:
