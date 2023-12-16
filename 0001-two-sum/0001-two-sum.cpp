@@ -44,10 +44,14 @@ private:
         int n = nums.size();
         unordered_map<int, int> ump;
         
+        // Iterate over array. For every element check what is the remainder to the sum needed.
+        // Check if the remainder has already been added in the hash. So here is the pair we needed
+        // Else just add current element into map and move to next element.
+        // https://www.youtube.com/watch?v=UXDSeD9mN-k&list=PLgUwDviBIf0rENwdL0nEH0uGom9no0nyB&index=5
         for(int i=0; i<n; i++) {
-            int remainder = target - nums[i];
-            if(ump.find(remainder) != ump.end()) {
-                return {i, ump[remainder]};
+            int remainderSum = target - nums[i];
+            if(ump.find(remainderSum) != ump.end()) {
+                return {i, ump[remainderSum]};
             }
             ump.insert({nums[i], i});
         }
