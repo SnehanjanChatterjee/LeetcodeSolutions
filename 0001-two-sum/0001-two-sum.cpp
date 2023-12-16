@@ -21,26 +21,21 @@ private:
     }
     
     vector<int> solution2(vector<int>& nums, int target) {
-        int n = nums.size();
-        int i=0, j=n-1;
+        int n = nums.size(), i = 0, j = n - 1;
         vector<int> ans(2);
-        
         vector<pair<int, int>> nums2;
-        for(int i=0; i<n; i++) {
+        
+        for(int i = 0; i < n; i++) {
             nums2.push_back({nums[i], i});
         }
         sort(nums2.begin(), nums2.end());
         
         while(i<j && i<n && j>=0) {
-            if(nums2[i].first + nums2[j].first == target) {
-                ans[0] = nums2[i].second;
-                ans[1] = nums2[j].second;
-                break;
-            }
+            if(nums2[i].first + nums2[j].first == target) return {nums2[i].second, nums2[j].second};
             else if(nums2[i].first + nums2[j].first < target) i++;
             else if(nums2[i].first + nums2[j].first > target) j--;
         }
-        return ans;
+        return {};
     }
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
