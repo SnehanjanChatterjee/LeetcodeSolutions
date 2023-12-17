@@ -17,7 +17,7 @@ public:
         // Kadane's Algorithm
         int sum = 0;
         int maxElement = nums[0];
-        for(int x: nums) {
+        for(int &x: nums) {
             sum += x;
             maxElement = max(maxElement, sum);
             if(sum < 0) {
