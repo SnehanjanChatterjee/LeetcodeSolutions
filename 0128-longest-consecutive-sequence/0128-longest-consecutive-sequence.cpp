@@ -36,6 +36,7 @@ private:
         return maxc == INT_MIN ? 1 : maxc;
     }
     
+    // https://www.youtube.com/watch?v=oO5uLE7EUlM&list=PLgUwDviBIf0rENwdL0nEH0uGom9no0nyB&index=14
     int solution2(vector<int>& nums) {
         unordered_set<int> ust(nums.begin(), nums.end());
         int maxCnt = INT_MIN, cnt = 1;
