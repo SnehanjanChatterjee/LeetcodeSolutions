@@ -48,9 +48,7 @@ private:
             // Else it can be the starting element
             if (!existInSet(ust, prevEle)) {
                 cnt = 1;
-                while(existInSet(ust, ++ele)) {
-                    cnt++;
-                }
+                while(existInSet(ust, ++ele)) cnt++;
                 maxCnt = max(maxCnt, cnt);
             }
         }
@@ -60,8 +58,8 @@ private:
 public:
     
     int longestConsecutive(vector<int>& nums) {
-        if(nums.size() == 0)
-            return 0;
+        if(nums.size() == 0) return 0;
+        
         // return solution1(nums);
         
         return solution2(nums);
