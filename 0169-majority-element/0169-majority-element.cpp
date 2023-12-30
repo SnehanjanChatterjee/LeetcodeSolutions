@@ -23,8 +23,9 @@ private:
         for(int &x: nums) {
             if(count == 0) {
                 majorityElement = x;
+                count = 1;
             }
-            if(majorityElement == x)
+            else if(majorityElement == x)
                 count++;
             else
                 count--;
