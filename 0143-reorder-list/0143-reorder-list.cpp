@@ -39,6 +39,7 @@ private:
         return count;
     }
 public:
+    // Reference for linking the 2 lists: https://www.youtube.com/watch?v=mD7L5l2NmGU
     void reorderList(ListNode* head) {
         ListNode* start = head;
         ListNode* mid = head;
