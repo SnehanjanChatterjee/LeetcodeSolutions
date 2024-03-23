@@ -9,8 +9,18 @@
  * };
  */
 class Solution {
+private:
+    ListNode* reverseList(ListNode* head) {
+        ListNode *prev=NULL, *curr=head, *next=head;
+        while(curr != NULL) {
+            next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
 public:
-
     bool isPalindrome(ListNode* head) {
         if(head==NULL || head->next==NULL) return true;
 
@@ -36,16 +46,5 @@ public:
         }
         
         return true;
-    }
-    
-    ListNode* reverseList(ListNode* head) {
-        ListNode *prev=NULL, *curr=head, *next=head;
-        while(curr != NULL) {
-            next = curr->next;
-            curr->next = prev;
-            prev = curr;
-            curr = next;
-        }
-        return prev;
     }
 };
