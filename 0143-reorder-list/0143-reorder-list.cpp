@@ -40,39 +40,30 @@ private:
     }
 public:
     void reorderList(ListNode* head) {
-        // base case : linkedlist is empty
-        if (!head) return;
+        ListNode* start = head;
+        ListNode* mid = head;
+        ListNode* end = head;
         
-        // finding the middle with the help of two pointer approach
-        ListNode *tmp = head, *half = head, *prev = NULL;
-        while (tmp->next && tmp->next->next) {
-            tmp = tmp->next->next;
-            half = half->next;
+        // Find middle point
+        while(end->next != NULL && end->next->next != NULL) {
+            mid = mid->next;
+            end = end->next->next;
         }
         
-        // adding one bit in case of lists with even length
-        if (tmp->next) half = half->next;
+        // Reverse 2nd half
+        mid = reverseList(mid->next);
         
-        // Now reverse the second half
-        while (half) {
-            tmp = half->next;
-            half->next = prev;
-            prev = half;
-            half = tmp;
+        // Link 2 halves according to the problem statement
+        while(mid != NULL) {
+            ListNode* tmp1 = start->next;
+            ListNode* tmp2 = mid->next;
+            
+            start->next = mid;
+            mid->next = tmp1;
+            
+            start = tmp1;
+            mid = tmp2;
         }
-        half = prev;
-        
-        // After reversing the second half, let's merge both the halfes
-        while (head && half) {
-            tmp = head->next;
-            prev = half->next;
-            head->next = half;
-            half->next = tmp;
-            head = tmp;
-            half = prev;
-        }
-        
-        // Base case : closing when we had even length arrays
-        if (head && head->next) head->next->next = NULL;
+        start->next = NULL;
     }
 };
