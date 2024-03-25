@@ -5,6 +5,7 @@ private:
     // Ref -> 
     // 1. https://github.com/gibsjose/cpp-cheat-sheet/blob/master/Data%20Structures%20and%20Algorithms.md#42-selection-sort
     // 2. https://www.youtube.com/watch?v=HGk_ypEuS24
+    // At each step find minimum number of array and bring to beginning, just like we sort cards in hand
     void selectionSort(vector<int>& nums) {
         int smallIndex = 0, n = nums.size();
         for(int  i= 0; i < n-1; i++) {
@@ -27,6 +28,7 @@ private:
     // Ref -> 
     // 1. https://github.com/gibsjose/cpp-cheat-sheet/blob/master/Data%20Structures%20and%20Algorithms.md#43-bubble-sort
     // 2. https://www.youtube.com/watch?v=HGk_ypEuS24
+    // Bring max number to end of array at each step
     void bubbleSort(vector<int>& nums) {
         int n = nums.size();
         for (int i = n - 1; i >= 0; i--) {
@@ -48,6 +50,8 @@ private:
     // Ref -> 
     // 1. https://github.com/gibsjose/cpp-cheat-sheet/blob/master/Data%20Structures%20and%20Algorithms.md#41-insertion-sort
     // 2. https://www.youtube.com/watch?v=HGk_ypEuS24
+    // Keep sliding right and adding new element to form a sub array. 
+    // For new element added to the subarray bring it to its sorted position so that the subarray is sorted.
     void insertionSort(vector<int>& nums) {
         int n = nums.size();
         for (int i = 0; i <= n - 1; i++) {
@@ -60,10 +64,6 @@ private:
     }
     
     // TC -> O(NlogN) for the all cases
-    // SC -> O(N)
-    // Ref -> 
-    // 1. https://github.com/gibsjose/cpp-cheat-sheet/blob/master/Data%20Structures%20and%20Algorithms.md#44-merge-sort
-    // 2. // TC -> O(NlogN) for the all cases
     // SC -> O(N)
     // Ref -> 
     // 1. https://github.com/gibsjose/cpp-cheat-sheet/blob/master/Data%20Structures%20and%20Algorithms.md#44-merge-sort
