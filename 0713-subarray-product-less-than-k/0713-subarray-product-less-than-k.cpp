@@ -15,6 +15,7 @@ public:
                 left++;
             }
             
+            // https://leetcode.com/problems/subarray-product-less-than-k/discuss/108861/JavaC++-Clean-Code-with-Explanation/288776
             cnt += (right - left + 1);
             
             right++;
