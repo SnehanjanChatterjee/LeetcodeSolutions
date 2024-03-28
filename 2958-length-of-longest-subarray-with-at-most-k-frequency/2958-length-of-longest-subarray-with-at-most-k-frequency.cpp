@@ -32,12 +32,10 @@ public:
             // }
             
             if(ump[nums[j]] > k){
-                while(nums[i] != nums[j]) {
+                while(i<j && ump[nums[j]] > k) {
                     ump[nums[i]]--;
                     i++;
                 }
-                ump[nums[i]]--;
-                i++;
             }
             
             maxLength = max(maxLength, (j - i + 1));
