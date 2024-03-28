@@ -1,23 +1,50 @@
 class Solution {
 public:
     int maxSubarrayLength(vector<int>& nums, int k) {
-        int ans=0;
-        unordered_map<int,int>mp;
-        int n=size(nums);
-
-        for(int l=0,r=0;r<n;r++){
-            mp[nums[r]]++; //inserting value in window from right 
-        //if newly inserted element exceed frequencey poped it out from left   
-            if(mp[nums[r]]>k){
-                while(nums[l]!=nums[r]){
-                    mp[nums[l]]--;
-                    l++;
+        unordered_map<int, int> ump;
+        int i = 0;
+        int j = 0;
+        int n = nums.size();
+        int maxLength = INT_MIN;
+        
+        // Sliding window
+        while(j < n) {
+            ump[nums[j]]++;
+            
+            
+            // if(ump[nums[j]] <= k) { // If after considering current char count is within limit, calculate length
+            //     maxLength = max(maxLength, (j - i + 1));
+            //     // cout<<"If: ump["<<nums[j]<<"] = "<<ump[nums[j]]<<" maxLength = "<<maxLength<<endl;
+            // } else if(ump[nums[j]] > k) {
+            //     // cout<<"else: ump["<<nums[i]<<"] = "<<ump[nums[i]]<<endl;
+            //     if(nums[i] == nums[j]) {
+            //         while(i<n && ump[nums[i]] > k) { // Till freq is not within limits keep removing ith element
+            //             ump[nums[i]]--;
+            //             // cout<<"while: ump["<<nums[i]<<"] = "<<ump[nums[i]]<<endl;
+            //             if(ump[nums[i]] == 0) ump.erase(nums[i]);
+            //             i++;
+            //         }
+            //     } else {
+            //         ump.clear();
+            //         i = j;
+            //         ump[nums[i]]++;
+            //     }
+            // }
+            
+            if(ump[nums[j]] > k){
+                while(nums[i] != nums[j]) {
+                    ump[nums[i]]--;
+                    i++;
                 }
-                mp[nums[l]]--;
-                l++;
+                ump[nums[i]]--;
+                i++;
             }
-            ans=max(ans,r-l+1);
+            
+            maxLength = max(maxLength, (j - i + 1));
+            
+            j++;
         }
-        return ans;
+        
+        return maxLength;
     }
 };
