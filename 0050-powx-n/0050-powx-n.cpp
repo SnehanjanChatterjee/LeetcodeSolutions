@@ -20,24 +20,6 @@ private:
         return num;
     }
     
-    // Not working
-    double mySoln2(double x, int n) {
-        if(n == 0) return 1;
-        
-        if(n < 0) {
-            x = (1/(x*x));
-            cout << "-ve x = " << x << endl;
-            myPow(x, n+1);
-        } else {
-            x = x*x;
-            cout << "+ve x = " << x << endl;
-            myPow(x, n-1);
-        }
-        
-        cout << "Returning x = " << x << endl;
-        return x;
-    }
-    
     // https://www.youtube.com/watch?v=g9YQyYi4IQQ
     double neetCodeSoln(double x, int n) {
         double res = recur(x, abs(n));
@@ -52,12 +34,41 @@ private:
         
         return ((n % 2 == 0) ? res : (x * res));
     }
+    
+    // https://www.youtube.com/watch?v=l0YC3876qxg
+    double striverSoln(double x, int n) {
+        double ans = 1.0;
+        long long nn = n;
+        if (nn < 0) nn = -1 * nn;
+        
+        // 2^10 = (2x2)^5 = 4^5
+        // 4^5 = 4 x 4^4
+        // 4^4 = (4x4)^2 = 16^2
+        // 16^2 = (16x16)^1 = 256^1
+        // 256^1 = 256 x 256^0
+        while (nn) {
+            // nn is odd
+            if (nn % 2) {
+                ans = ans * x;
+                nn = nn - 1;
+            }
+            // nn is even
+            else {
+                x = x * x;
+                nn = nn / 2;
+            }
+        }
+        if (n < 0) ans = (double)(1.0) / (double)(ans);
+        return ans;
+    }
 public:
     double myPow(double x, int n) {
         // return mySoln1(x, n);
         
         // return mySoln2(x, n);
         
-        return neetCodeSoln(x, n);
+        // return neetCodeSoln(x, n);
+        
+        return striverSoln(x, n);
     }
 };
