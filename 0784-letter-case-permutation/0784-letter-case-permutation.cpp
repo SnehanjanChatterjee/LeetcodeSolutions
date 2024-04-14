@@ -6,7 +6,7 @@ void recur(int ind, int n, vector<string> &ans, string &s, string convertedS) {
         return;
     }
     
-    if(s[ind] >= 48 && s[ind] <= 57) {
+    if(isdigit(s[ind])) { // char is a digit i.e ascii value lies b/w 48 && 57
         convertedS += s[ind];
         recur(ind+1, n, ans, s, convertedS);
     } else {
