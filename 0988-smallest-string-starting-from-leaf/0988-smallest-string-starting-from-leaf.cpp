@@ -19,14 +19,13 @@ private:
         }
         
         if(root->left != NULL) {
-            str.push_back('a' + root->left->val);
+            str.push_back('a' + root->left->val); // Push char into string and pass updated string to recursion call
             dfs(root->left, str, minHeap);
-            str.pop_back();
+            str.pop_back(); // But if we have pushed to string make sure to pop it when we backtrack
         }
         if(root->right != NULL) {
-            str.push_back('a' + root->right->val);
-            dfs(root->right, str, minHeap);
-            str.pop_back();
+            // This way also can be done where instead of pushing to string, directly concatenate and pass it to recursion call
+            dfs(root->right, str + (char)('a' + root->right->val), minHeap);
         }
     }
 public:
