@@ -22,10 +22,10 @@ public:
             else if(j-i+1 == k) {
                 // Calculate
                 v.push_back(dq.front());
-                if(arr[i] == dq.front())
-                    dq.pop_front();
+                if(arr[i] == dq.front()) dq.pop_front();
                 
-                i++;j++;
+                i++;
+                j++;
             }
         }
         return v;
