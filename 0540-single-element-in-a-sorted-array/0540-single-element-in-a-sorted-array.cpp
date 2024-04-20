@@ -14,10 +14,8 @@ public:
             // [Partition is done where single element lies.
             // 1,1,|2,3,3,4,4,8,8. Partiton at 1st index before 2
             // So we have to move towards that single element]
-            // If in 1st half,
-            // 1st instance of duplicate no is at -> even index, 2nd instance -> odd index
-            // If in 2nd half,
-            // 1st instance of duplicate no is at -> odd index, 2nd instance -> even index
+            // If in 1st half of single ele, 1st instance of duplicate no is at -> even index, 2nd instance -> odd index
+            // If in 2nd half of single ele, 1st instance of duplicate no is at -> odd index, 2nd instance -> even index
             // So checking if mid is even
             if(mid % 2 == 0) {
                 // Since mid is even for this to be in 1st half of partition
