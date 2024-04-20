@@ -18,14 +18,12 @@ public:
             // If in 2nd half of single ele, 1st instance of duplicate no is at -> odd index, 2nd instance -> even index
             // So checking if mid is even
             if(mid % 2 == 0) {
-                // Since mid is even for this to be in 1st half of partition
-                // Current no and its next no has to be same
-                if (nums[mid] != nums[mid + 1]) high = mid - 1; // Shrinking the right half
-                else low = mid + 1; // Shrinking the left half
+                // Since mid is even for this to be in 1st half of partition, current no and its next no has to be same
+                if (nums[mid] == nums[mid + 1]) low = mid + 1; // We are in 1st half. Eliminate it.
+                else high = mid - 1; // We are in 2nd half. Eliminate it.
             } else {
-                // Checking whether we are in right half
-                if (nums[mid] == nums[mid + 1]) high = mid - 1; // Shrinking the left half
-                else low = mid + 1; // Shrinking the right half
+                if (nums[mid] == nums[mid + 1]) high = mid - 1; // We are in 2nd half. Eliminate it.
+                else low = mid + 1; // We are in 1st half. Eliminate it.
             }
         }
         
