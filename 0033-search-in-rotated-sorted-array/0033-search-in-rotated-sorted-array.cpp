@@ -27,6 +27,7 @@ private:
         return -1;
     }
     
+    // https://www.youtube.com/watch?v=5qGrJbHhqFs&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=5
     int striverSoln(vector<int>& nums, int target, int n) {
         int low = 0;
         int high = n-1;
@@ -39,6 +40,7 @@ private:
             
             // Left half of mid is sorted
             if (nums[low] <= nums[mid]) {
+                // target actually lies in this sorted half i.e b/w low and mid
                 if(target >= nums[low] && target <= nums[mid]) high = mid - 1;
                 else low = mid + 1;
             }
