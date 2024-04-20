@@ -10,6 +10,13 @@ private:
         while (low <= high) {
             mid = low + ((high - low) / 2);
             
+            // [This optimization is optional]
+            // If the current search space array is entirely sorted no need to do binary search
+            if (nums[low] <= nums[high]) {
+                ans = min(ans, nums[low]);
+                break;
+            }
+            
             // Left half of mid is sorted
             if (nums[low] <= nums[mid]) {
                 // Since left half is sorted,
