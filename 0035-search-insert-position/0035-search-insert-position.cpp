@@ -7,13 +7,10 @@ public:
         
         // Finding lower bound
         while(low <= high) {
-            int mid = low + (high - low)/2;
-            if(nums[mid] >= target) {
-                ans = mid;
-                high = mid - 1;
-            } else {
-                low = mid + 1;
-            }
+            int mid = low + ((high - low) / 2);
+            
+            if(nums[mid] >= target) ans = mid, high = mid - 1;
+            else low = mid + 1;
         }
         
         // If lower bound was not found in array, answer will be (last index of array + 1) i.e n.
