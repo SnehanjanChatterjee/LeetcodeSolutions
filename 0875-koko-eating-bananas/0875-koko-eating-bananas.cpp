@@ -1,6 +1,7 @@
 class Solution {
 private:
-    int hoursToEat(vector<int>& piles, int k, int h) {
+    // TC -> O(N)
+    int totalHoursToEat(vector<int>& piles, int k, int h) {
         int ans = 0;
         for(auto &x: piles) {
             ans += ceil((double)x / (double)k);
@@ -20,10 +21,11 @@ public:
         int high = *max_element(piles.begin(), piles.end());
         int mid;
         
+        // TC -> O(N) * O(logN) [O(N) for totalHoursToEat()]
         while (low <= high) {
             mid = low + ((high - low) / 2);
             
-            if (hoursToEat(piles, mid, h) <= h) high = mid - 1;
+            if (totalHoursToEat(piles, mid, h) <= h) high = mid - 1;
             else low = mid + 1;
         }
         
