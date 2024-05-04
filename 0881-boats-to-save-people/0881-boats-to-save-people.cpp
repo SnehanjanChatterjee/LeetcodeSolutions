@@ -7,8 +7,10 @@ public:
         int i = 0, j = people.size() - 1;
         
         while (i <= j) {
-            if (people[i] + people[j] > limit) j--;
-            else i++, j--;
+            // If sum of lightest & heaviest person are under limit then both can go together
+            if (people[i] + people[j] <= limit) i++, j--;
+            // Else let heaviest person go alone
+            else j--;
             
             boatCnt++;
         }
