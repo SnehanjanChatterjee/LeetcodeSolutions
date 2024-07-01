@@ -13,6 +13,7 @@ private:
         return recur(friends, k, ind);
     }
 public:
+    // Josephus Problem
     int findTheWinner(int n, int k) {
         vector<int> friends(n);
         int ind = 0;
