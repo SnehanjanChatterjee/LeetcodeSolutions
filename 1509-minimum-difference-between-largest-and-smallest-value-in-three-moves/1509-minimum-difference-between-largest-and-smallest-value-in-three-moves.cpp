@@ -21,12 +21,14 @@ private:
         
         sort(nums.begin(), nums.end());
         
-        int op1 = nums[n-4] - nums[0]; // Make last 3 elements same as 1st element. So now max element is (n-4)th element
-        int op2 = nums[n-3] - nums[1]; // Make 1st 2 & last 2 elements same. So now max element is (n-3)th element
-        int op3 = nums[n-2] - nums[2]; // Make 1st 3 & last elements same. So now max element is (n-2)th element
-        int op4 = nums[n-1] - nums[3]; // Make 1st 3 elements same as last element. So now max element is (n-1)th element
+        // Here we have to reduce the difference b/w the largest and smallest
         
-        return min(op1, min(op2, min(op3, op4)));
+        int option1 = nums[n-4] - nums[0]; // Make last 3 elements same as 1st element. So now max element is (n-4)th element
+        int option2 = nums[n-3] - nums[1]; // Make 1st 2 & last 2 elements same. So now max element is (n-3)th element
+        int option3 = nums[n-2] - nums[2]; // Make 1st 3 & last elements same. So now max element is (n-2)th element
+        int option4 = nums[n-1] - nums[3]; // Make 1st 3 elements same as last element. So now max element is (n-1)th element
+        
+        return min(option1, min(option2, min(option3, option4)));
     }
 public:
     int minDifference(vector<int>& nums) {
